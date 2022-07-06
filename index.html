@@ -1,16 +1,26 @@
-12 lines (12 sloc) 233 Bytes
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Key Detection</title>
-    <script
-      type="text/javascript"
-      src="https://www.cornify.com/js/cornify.js"
-    ></script>
   </head>
   <body>
-    <script></script>
+    <script>
+      const pressed = [];
+      const secretCode = "mattst";
+
+      window.addEventListener("keyup", (event) => {
+        console.log(`Event Key is ${event.key}`);
+        pressed.push(event.key);
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
+        if (pressed.join("").includes(secretCode)) {
+          console.log("Secret code has been found!");
+        }
+        console.log(pressed);
+      });
+    </script>
   </body>
 </html>
